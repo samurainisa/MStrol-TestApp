@@ -51,4 +51,35 @@ export class TreeStore {
 
     return result
   }
+
+  getAllParents(id: TreeItemId): TreeItem[] {
+    const allParents: TreeItem[] = []
+    let current = this.getItem(id)
+
+    while (current) {
+      allParents.push(current)
+      current =
+        current.parent === null ? null : this.getItem(current.parent)
+    }
+    return allParents
+  }
+
+  addItem(item: TreeItem): void {
+    this.items.push(item)
+  }
+
+  removeItem(id: TreeItemId): void {
+    const itemsToRemove = new Set<TreeItemId>([
+      id, ...this.getAllChildren(id).map((item) => item.id),
+    ])
+
+    this.items = this.items.filter((item) => !itemsToRemove.has(item.id))
+  }
+
+  updateItem(item: TreeItem): void {
+    const index = this.items.findIndex((i) => i.id === item.id)
+    if (index !== -1) {
+      this.items[index] = item
+    }
+  }
 }
