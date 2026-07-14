@@ -1,28 +1,25 @@
 <script setup lang="ts">
-import { AgGridVue } from 'ag-grid-vue3'
-
 import { ref } from 'vue'
+import { AgGridVue } from 'ag-grid-vue3'
 
 import type {
   ColDef,
-  ValueGetterParams,
 } from 'ag-grid-community'
 
 import {
   TreeStore,
-  items,
 } from '@/store/tree-store'
 
 import type { TableRow } from './model/types'
 
 import { buildTableRows, getRowId } from '@/utils/utils'
 
-const store = new TreeStore(
-  items.map((item) => ({ ...item })),
-)
+const props = defineProps<{
+  store: TreeStore
+}>()
 
 const tableRows = ref<TableRow[]>(
-  buildTableRows(store),
+  buildTableRows(props.store),
 )
 
 const columnDefs = ref<
@@ -32,13 +29,11 @@ const columnDefs = ref<
     headerName: '№ п/п',
     flex: 1,
     valueGetter: (params) => {
-      if (params.node.rowIndex === null) {
+      if (params.node?.rowIndex == null) {
         return ''
       }
-
       return params.node.rowIndex + 1
     },
-    
   },
   {
     field: 'category',
@@ -61,7 +56,6 @@ const defaultColDef: ColDef<TableRow> = {
   sortable: false,
   filter: false,
 }
-
 </script>
 
 <template>

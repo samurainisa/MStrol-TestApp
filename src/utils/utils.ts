@@ -1,6 +1,6 @@
+import type { GetRowIdParams } from 'ag-grid-community'
 import type { TreeItem, TreeItemId } from '@/store/tree-store'
 import type { TableRow } from '@/components/table/model/types'
-import type { GetRowIdParams } from 'ag-grid-community'
 
 import { TreeStore } from '@/store/tree-store'
 

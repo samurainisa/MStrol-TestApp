@@ -4,32 +4,38 @@
 ![graph](graph.png)
 
 
+1. написан класс для работы с графом TreeStore
+2. написаны методы 
+3. написаны юнит-тесты для класса TreeStore
+4. проект разбит на модули (компоненты, тесты, стор, utils)
+5. проект написан на TypeScript
+6. 
 
-## Project Setup
+## установка зависимостей проекта
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### запуск проекта в режиме разработки
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### сборка проекта для продакшена
 
 ```sh
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### запуск тестов
 
 ```sh
 npm run test:unit
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### линтинг
 
 ```sh
 npm run lint
